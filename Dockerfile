@@ -2,7 +2,8 @@ FROM node:20-bullseye-slim
 
 RUN apt-get update --fix-missing && \
     apt-get install -y --no-install-recommends \
-    git ffmpeg imagemagick webp curl ca-certificates && \
+    git ffmpeg imagemagick webp curl ca-certificates \
+    python3 make g++ sqlite3 libsqlite3-dev && \
     rm -rf /var/lib/apt/lists/*
 
 RUN git config --global url."https://".insteadOf ssh:// && \
@@ -12,7 +13,7 @@ RUN git config --global url."https://".insteadOf ssh:// && \
 WORKDIR /app
 
 COPY package.json ./
-RUN npm install --legacy-peer-deps --ignore-scripts
+RUN npm install --legacy-peer-deps
 
 COPY . .
 
