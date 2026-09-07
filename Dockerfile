@@ -1,4 +1,4 @@
-FROM node:lts-buster
+FROM node:lts-bullseye
 
 RUN git clone https://github.com/ayanali7860/SARWAR-ALI-MD.git /root/sarwar-bot
 
